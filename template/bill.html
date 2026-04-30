@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Invoice 🧾</h1>
+
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Address:</strong> {{ address }}</p>
+    <p><strong>Payment:</strong> {{ payment }}</p>
+
+    <hr>
+
+    {% for item in items %}
+        <p>{{ item.itemn }} × {{ item.qty }} = ₹{{ item.subtotal }}</p>
+    {% endfor %}
+
+    <h2>Total: ₹{{ total }}</h2>
+
+    <a href="{% url 'userview' %}">
+        <button>Back to Shop</button>
+    </a>
+</div>
+
+</body>
+</html>

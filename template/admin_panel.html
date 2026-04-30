@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Panel</h1>
+
+    <div class="button-group">
+        <a href="{% url 'add' %}">
+            <button>Add Product</button>
+        </a>
+
+        <a href="{% url 'view' %}">
+            <button>View Products</button>
+        </a>
+    </div>
+
+    <a href="{% url 'logout' %}">
+        <button class="logout-btn">Logout</button>
+    </a>
+</div>
+
+</body>
+</html>

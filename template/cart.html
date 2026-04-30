@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Your Cart 🛒</h1>
+
+    {% if items %}
+
+    <div class="products-container">
+
+        {% for i in items %}
+        <div class="product">
+
+            <img src="{{ i.img }}" class="cart-img">
+
+            <h3>{{ i.itemn }}</h3>
+
+            <p>Price: ₹{{ i.price }}</p>
+            <p>Quantity: {{ i.qty }}</p>
+            <p><strong>Subtotal: ₹{{ i.subtotal|floatformat:0|add:"0"|floatformat:0 }}</strong></p>
+            <form action="{% url 'remove_item' i.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="remove-btn">Remove</button>
+            </form>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <h2 class="total">Total: ₹{{ total }}</h2>
+
+    <h2 class="total">Total: ₹{{ total }}</h2>
+
+<a href="{% url 'place_order' %}">
+    <button class="order-btn">Place Order</button>
+</a>
+
+    {% else %}
+        <p>Your cart is empty 😢</p>
+    {% endif %}
+
+    <a href="{% url 'userview' %}" class="back">⬅ Continue Shopping</a>
+</div>
+
+</body>
+</html>

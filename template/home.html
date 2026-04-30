@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Product App</h1>
+
+    <a href="{% url 'user_login' %}"><button>User View</button></a>
+    <a href="{% url 'admin_view' %}"><button>Admin Login</button></a>
+</div>
+
+</body>
+</html>
